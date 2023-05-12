@@ -60,8 +60,6 @@ public class Principal{
                 case 1:
 
                 jogador.get(vez).setPodeJogar();
-                    
-                opc = 1;
 
                 break;
 
