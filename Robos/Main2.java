@@ -26,24 +26,24 @@ public class Main2 {
 
                 if(j == r1.getY() && i == r1.getX()) {
                     if(j == r2.getY() && i == r2.getX()) {
-                        System.out.print("r1r2");
+                        System.out.print("r1r2 ");
                         continue;
                     } 
-                    System.out.println("r1--");
+                    System.out.print("r1-- ");
                     continue;
                 }
 
-                if(j == r2.getY() && i == r1.getX()) {
-                    System.out.println("r2--");
+                if(j == r2.getY() && i == r2.getX()) {
+                    System.out.print("r2-- ");
                     continue;
                 }
 
                 if ( j == alimentoY && i == alimentoX) {
-                    System.out.print("alim");
+                    System.out.print("alim ");
                     continue;
                 }
 
-                System.out.print("----");
+                System.out.print("---- ");
             }
             System.out.println("");
         }
@@ -51,6 +51,11 @@ public class Main2 {
         
         int movR1 = 0;
         int movR2 = 0;
+        int movValR1 = 0;
+        int movInvalR1 = 0;
+        int movValR2 = 0;
+        int movInvalR2 = 0;
+        
 
         while(!r1.encontrouAlimento(alimentoX, alimentoY) && !r2.encontrouAlimento(alimentoX, alimentoY)){
             ////Delay em java
@@ -61,14 +66,18 @@ public class Main2 {
             
             try{
                 r1.mover(movR1);
+                movValR1++;
             } catch (MovimentoInvalidoException e) {
                 System.out.println("\n" + "O robo 1 " + e);
+                movInvalR1++;
             }
 
             try{
                 r2.mover(movR2);
+                movValR2++;
             } catch (MovimentoInvalidoException e) {
                 System.out.println("\n" + "O robo 2 " + e);
+                movInvalR2++;
             }
         
 
@@ -109,6 +118,11 @@ public class Main2 {
             System.out.println("\n" + "o robo 1 chegou no alimento !!!");
         if(r2.encontrouAlimento(alimentoX, alimentoY))
             System.out.println("\n" + "o robo 2 chegou no alimento !!!");
+
+        System.out.println("\n" + "O numero de movimento validos do R1 foi: " + movValR1);
+        System.out.println("O numero de invalidos foi: " + movInvalR1);
+        System.out.println("O numero de movimento validos do R2 foi: " + movValR2);
+        System.out.println("O numero de invalidos foi: " + movInvalR2);
         teclado.close();
     } 
 }
