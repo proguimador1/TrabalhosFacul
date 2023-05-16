@@ -15,104 +15,55 @@ public class Principal{
 
         ArrayList<Jogador> jogador = new ArrayList<Jogador>();
 
-        String[] cores = {"vermelho", "azul", "amarelo", "verde", "laranja", "roxo"};
-
-        System.out.println("Bem-vindo ao nosso jogo de tabuleiro.\n");
-        System.out.print("Primeiramente, crie os jogadores(min 2/ max 6):");
-        System.out.println("\n");
-
-        do{
-
-            if(qtd_jogadores >= 6){
-
-                System.out.println("Numero maximo de jogadores alcancado.\n");
-                
-                break;
-
-            }
-
-            System.out.print("Escolha o tipo do jogador.");
-            System.out.print("Digite 1 para tipo sortudo, 2 para tipo azarado ");
-            System.out.println("ou 3 para tipo nomal:");
-            String tipo = teclado.next();
-            System.out.println("\n");
-
-            if(tipo.equals("1")){
-
-                jogador.add(new JogadorAzarado(cores[qtd_jogadores], 0));
-
-            }
-            else if(tipo.equals("2")){
-
-                jogador.add(new JogadorSortudo(cores[qtd_jogadores], 0));
-
-            }
-            else{
-
-                jogador.add(new Jogador(cores[qtd_jogadores], 0));
-
-            }
-
-            System.out.print("Jogador ");
-            System.out.print(jogador.get(qtd_jogadores + 1).getCor());
-            System.out.println(" acabou de ser criado.\n");
-
-            if(qtd_jogadores >= 2){
-
-                    System.out.print("Deseja adicionar outro jogador?");
-                    System.out.print("Digite 1 para sim, ou qualquer outro numero");
-                    System.out.println(" para nao: ");
-                    String opc = teclado.next();
-                    System.out.println("\n");
-
-                    if(opc.equals("1"))
-                        break;
-
-            }
-
-            qtd_jogadores++;
-
-        }while(true);
-
-        System.out.println("Agora vamos comecar!\n");
+        jogador.add(new Jogador("vermelho",0));
+        jogador.add(new Jogador("azul",0));
+        jogador.add(new Jogador("amarelo",0));
+        jogador.add(new Jogador("verde",0));
+        jogador.add(new JogadorSortudo("laranja",0));
+        jogador.add(new JogadorAzarado("roxo",0));
 
         while(!gameover){
 
             int opc = 0;
+            boolean verify = false;
 
             if(jogador.get(vez).getPodeJogar()){
 
                 System.out.print("E a vez do jogador: " + jogador.get(vez).getCor());
                 System.out.println("\n");
+                System.out.print("Pressione enter para jogar:");
+                String jogar = teclado.next();
+                System.out.println("\n");
 
-                if(!jogador.get(vez).moverSe(tabuleiro.lancarDados())){
+                do{
+                    
+                    if(!jogador.get(vez).moverSe(tabuleiro.lancarDados())){
 
-                    System.out.print("Numero dos dados nao compativel com o tipo do jogador.");
-                    System.out.println(" Jogue novamente.\n");
+                        System.out.print("Numero dos dados nao compativel com o tipo do jogador.");
+                        System.out.println(" Jogue novamente.\n");
 
-                    opc = 1;
-
-                }
-                else{
-
-                    System.out.print("O jogador andou.\n");
-                    System.out.print((tabuleiro.getDado1()+tabuleiro.getDado2()));
-                    System.out.println(" casas.\n");
-
-                    if(tabuleiro.getDado1() == tabuleiro.getDado2()){
-
-                        System.out.print("Dados iguais! ");
-                        System.out.print("Digite 1 para jogar novamente, ou qualquer ");
-                        System.out.println("outro numero para passar a vez:");
-                        opc = teclado.nextInt();
-
-                        System.out.println("\n");
-    
                     }
+                    else{
 
-                }
+                        System.out.print("O jogador andou.\n");
+                        System.out.print((tabuleiro.getDado1()+tabuleiro.getDado2()));
+                        System.out.println(" casas.\n");
 
-                jogador.get(vez).setQtdJogadas();
+                        if(tabuleiro.getDado1() == tabuleiro.getDado2()){
+
+                            System.out.println("Dados iguais! Jogando novamente...");
+
+                            System.out.println("\n");
+    
+                        }
+                        
+                        jogador.get(vez).setQtdJogadas();
+                        
+                        break;
+
+                    }
+                    
+                }while(true);
 
             }
             else{
@@ -127,7 +78,7 @@ public class Principal{
                 case 10:
                 case 25:
                 case 38:
-
+                    
                 jogador.get(vez).setPodeJogar();
 
                 break;
@@ -155,17 +106,8 @@ public class Principal{
                 String cor = teclado.next();
                 
                 System.out.println("\n");
-
-                int ind;
-
-                for(ind = 0; ind < jogador.size(); ind++){
-
-                    if(jogador.get(ind).getCor().equals(cor))
-                        break;
                     
-                }
-
-                jogador.get(ind).setPosicao(0);
+                tabuleiro.enviarInicio(jogador);
 
                 break;
 
