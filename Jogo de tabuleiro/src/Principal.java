@@ -80,49 +80,7 @@ public class Principal{
 
             int opc = 0;
 
-            if(jogador.get(vez).getPodeJogar()){
-
-                System.out.print("E a vez do jogador: " + jogador.get(vez).getCor());
-                System.out.println("\n");
-
-                if(!jogador.get(vez).moverSe(tabuleiro.lancarDados())){
-
-                    System.out.print("Numero dos dados nao compativel com o tipo do jogador.");
-                    System.out.println(" Jogue novamente.\n");
-
-                    opc = 1;
-
-                }
-                else{
-
-                    System.out.print("O jogador andou ");
-                    System.out.print((tabuleiro.getDado1()+tabuleiro.getDado2()));
-                    System.out.println(" casas.\n");
-
-                    if(tabuleiro.getDado1() == tabuleiro.getDado2()){
-
-                        System.out.print("Dados iguais! ");
-                        System.out.print("Digite 1 para jogar novamente, ou qualquer ");
-                        System.out.println("outro numero para passar a vez:");
-                        opc = teclado.nextInt();
-
-                        System.out.println("\n");
-    
-                    }
-
-                }
-
-                jogador.get(vez).setQtdJogadas();
-
-            }
-            else{
-
-                System.out.print("O jogador esta na casa " + jogador.get(vez).getPosicao());
-                System.out.println(". Portanto nao pode se mover nessa rodada.");
-
-            }
-
-            switch(jogador.get(vez).getPosicao()){
+switch(jogador.get(vez).getPosicao()){
 
                 case 10:
                 case 25:
@@ -198,6 +156,48 @@ public class Principal{
                     System.out.println(".\n");
 
                 }
+
+            }
+
+            if(jogador.get(vez).getPodeJogar()){
+
+                System.out.print("E a vez do jogador: " + jogador.get(vez).getCor());
+                System.out.println("\n");
+
+                if(!jogador.get(vez).moverSe(tabuleiro.lancarDados())){
+
+                    System.out.print("Numero dos dados nao compativel com o tipo do jogador.");
+                    System.out.println(" Jogue novamente.\n");
+
+                    opc = 1;
+
+                }
+                else{
+
+                    System.out.print("O jogador andou.\n");
+                    System.out.print((tabuleiro.getDado1()+tabuleiro.getDado2()));
+                    System.out.println(" casas.\n");
+
+                    if(tabuleiro.getDado1() == tabuleiro.getDado2()){
+
+                        System.out.print("Dados iguais! ");
+                        System.out.print("Digite 1 para jogar novamente, ou qualquer ");
+                        System.out.println("outro numero para passar a vez:");
+                        opc = teclado.nextInt();
+
+                        System.out.println("\n");
+    
+                    }
+
+                }
+
+                jogador.get(vez).setQtdJogadas();
+
+            }
+            else{
+
+                System.out.print("O jogador esta na casa " + jogador.get(vez).getPosicao());
+                System.out.println(". Portanto nao pode se mover nessa rodada.");
 
             }
 
