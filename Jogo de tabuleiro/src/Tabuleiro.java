@@ -128,4 +128,19 @@ public class Tabuleiro {
 
     }
     
+    public void enviarInicio(ArrayList<Jogador> jogador){
+        
+        int ind;
+
+        for(ind = 0; ind < jogador.size(); ind++){
+
+            if(jogador.get(ind).getCor().equals(cor))
+                break;
+                    
+        }
+
+            jogador.get(ind).setPosicao(0);
+        
+    }
+    
 }
