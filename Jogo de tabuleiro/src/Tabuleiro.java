@@ -117,14 +117,29 @@ public class Tabuleiro {
 
     }
 
-    public void trocarComUltimo(Jogador jogador1, Jogador jogador2){
+    public void trocarComUltimo(ArrayList<Jogador> jogador, int vez){
 
-        int ultimo = jogador2.getPosicao();
-        int outro = jogador1.getPosicao();
+        int ind2 = vez;
 
-        jogador1.setPosicao(ultimo);
+        for(ind = 0; ind < jogador.size(); ind++){
 
-        jogador2.setPosicao(outro);
+           if(jogador.get(ind2).getPosicao() > jogador.get(ind).getPosicao())
+               ind2 = ind;
+
+        }
+
+        if(ind2 == vez){
+
+           System.out.println("Permanece no mesmo lugar por ja ser o ultimo.\n");
+
+        }
+        else{
+
+            System.out.print("Trocou de lugar com o jogador ");
+            System.out.print(jogador.get(ind2).getCor());
+            System.out.println(".\n");
+
+        }
 
     }
     
