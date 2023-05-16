@@ -117,6 +117,8 @@ public class Principal{
 
                 System.out.print("O jogador esta na casa " + jogador.get(vez).getPosicao());
                 System.out.println(".\n");
+                    
+                tabuleiro.trocarComUltimo(jogador,vez);
 
             }
 
