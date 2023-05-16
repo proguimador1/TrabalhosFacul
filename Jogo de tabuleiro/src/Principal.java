@@ -25,7 +25,6 @@ public class Principal{
         while(!gameover){
 
             int opc = 0;
-            boolean verify = false;
 
             if(jogador.get(vez).getPodeJogar()){
 
@@ -54,6 +53,8 @@ public class Principal{
                             System.out.println("Dados iguais! Jogando novamente...");
 
                             System.out.println("\n");
+                            
+                            opc = 1;
     
                         }
                         
@@ -117,30 +118,6 @@ public class Principal{
                 System.out.print("O jogador esta na casa " + jogador.get(vez).getPosicao());
                 System.out.println(".\n");
 
-                int ind2 = vez;
-
-                for(ind = 0; ind < jogador.size(); ind++){
-
-                    if(jogador.get(ind2).getPosicao() > jogador.get(ind).getPosicao())
-                        ind2 = ind;
-
-                }
-
-                if(ind2 == vez){
-
-                    System.out.println("Permanece no mesmo lugar por ja ser o ultimo.\n");
-
-                }
-                else{
-
-                    tabuleiro.trocarComUltimo(jogador.get(vez), jogador.get(ind2));
-
-                    System.out.print("Trocou de lugar com o jogador ");
-                    System.out.print(jogador.get(ind2).getCor());
-                    System.out.println(".\n");
-
-                }
-
             }
 
             gameover = tabuleiro.verificarVitoria(jogador.get(vez));
@@ -170,6 +147,7 @@ public class Principal{
             System.out.print(".\nPosicao: " + jogador.get(ind).getPosicao());
             System.out.print(".\nNumero de jogadas: " + jogador.get(ind).getQtdJogadas());
             System.out.println(".\n");
+            
         }
 
         System.out.print("Vencedor: Jogador " + jogador.get(vez).getCor() + "!");
