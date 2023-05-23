@@ -115,4 +115,11 @@ public class Robo {
         return cor;
         
     }
+
+    public void setCor(String cor){
+
+        this.cor = cor;
+
+    }
+
 }
