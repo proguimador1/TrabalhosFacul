@@ -7,14 +7,14 @@ public class Main {
         String cor = "";
         String color = "";
 
-        System.out.println("Selecione uma das cores abaixo para o robo.\n");
-
         System.out.println("Bem vindo ao jogo do robo movimente-se com as teclas 1, 2, 3, 4 ou digitando up, down, right, left");
         System.out.println("Para ganhar voce deve levar o robo ao alimento");
         System.out.print("\n" + "Digite a coordenada X inicial do alimento: ");
         int alimentoX = teclado.nextInt();
         System.out.print("\n" + "Digite a coordenada Y inicial do alimento: ");
         int alimentoY = teclado.nextInt();
+
+        System.out.println("Selecione uma das cores abaixo para o robo.\n");
 
         do{
             System.out.println("-Vermelho\n-Azul\n-Verde\n-Amarelo");           
